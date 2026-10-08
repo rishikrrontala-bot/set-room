@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-08T18:44:15.402002+00:00",
+  "title": "Design System: Set Room",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Evergreen ink",
+        "canonical": "#173d31",
+        "tonalRamp": [
+          "oklch(15% 0.0487 169.86)",
+          "oklch(26% 0.0487 169.86)",
+          "oklch(38% 0.0487 169.86)",
+          "oklch(49% 0.0487 169.86)",
+          "oklch(61% 0.0487 169.86)",
+          "oklch(72% 0.0487 169.86)",
+          "oklch(84% 0.0487 169.86)",
+          "oklch(95% 0.0487 169.86)"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Evergreen hover",
+        "canonical": "#285b43",
+        "tonalRamp": [
+          "oklch(15% 0.0686 161.03)",
+          "oklch(26% 0.0686 161.03)",
+          "oklch(38% 0.0686 161.03)",
+          "oklch(49% 0.0686 161.03)",
+          "oklch(61% 0.0686 161.03)",
+          "oklch(72% 0.0686 161.03)",
+          "oklch(84% 0.0686 161.03)",
+          "oklch(95% 0.0686 161.03)"
+        ]
+      },
+      "competition": {
+        "role": "secondary",
+        "displayName": "Competition lime",
+        "canonical": "#deef95",
+        "tonalRamp": [
+          "oklch(15% 0.1151 117.45)",
+          "oklch(26% 0.1151 117.45)",
+          "oklch(38% 0.1151 117.45)",
+          "oklch(49% 0.1151 117.45)",
+          "oklch(61% 0.1151 117.45)",
+          "oklch(72% 0.1151 117.45)",
+          "oklch(84% 0.1151 117.45)",
+          "oklch(95% 0.1151 117.45)"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Quiet table",
+        "canonical": "#f4f6f3",
+        "tonalRamp": [
+          "oklch(15% 0.0045 134.85)",
+          "oklch(26% 0.0045 134.85)",
+          "oklch(38% 0.0045 134.85)",
+          "oklch(49% 0.0045 134.85)",
+          "oklch(61% 0.0045 134.85)",
+          "oklch(72% 0.0045 134.85)",
+          "oklch(84% 0.0045 134.85)",
+          "oklch(95% 0.0045 134.85)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Card paper",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "board": {
+        "role": "neutral",
+        "displayName": "Board green",
+        "canonical": "#e7ece5",
+        "tonalRamp": [
+          "oklch(15% 0.0107 136.56)",
+          "oklch(26% 0.0107 136.56)",
+          "oklch(38% 0.0107 136.56)",
+          "oklch(49% 0.0107 136.56)",
+          "oklch(61% 0.0107 136.56)",
+          "oklch(72% 0.0107 136.56)",
+          "oklch(84% 0.0107 136.56)",
+          "oklch(95% 0.0107 136.56)"
+        ]
+      },
+      "quiet": {
+        "role": "neutral",
+        "displayName": "Quiet ink",
+        "canonical": "#52665c",
+        "tonalRamp": [
+          "oklch(15% 0.0289 163.49)",
+          "oklch(26% 0.0289 163.49)",
+          "oklch(38% 0.0289 163.49)",
+          "oklch(49% 0.0289 163.49)",
+          "oklch(61% 0.0289 163.49)",
+          "oklch(72% 0.0289 163.49)",
+          "oklch(84% 0.0289 163.49)",
+          "oklch(95% 0.0289 163.49)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline green",
+        "canonical": "#d6dfd8",
+        "tonalRamp": [
+          "oklch(15% 0.0135 152.58)",
+          "oklch(26% 0.0135 152.58)",
+          "oklch(38% 0.0135 152.58)",
+          "oklch(49% 0.0135 152.58)",
+          "oklch(61% 0.0135 152.58)",
+          "oklch(72% 0.0135 152.58)",
+          "oklch(84% 0.0135 152.58)",
+          "oklch(95% 0.0135 152.58)"
+        ]
+      },
+      "field-border": {
+        "role": "neutral",
+        "displayName": "Field border",
+        "canonical": "#c4d0c7",
+        "tonalRamp": [
+          "oklch(15% 0.0179 153.51)",
+          "oklch(26% 0.0179 153.51)",
+          "oklch(38% 0.0179 153.51)",
+          "oklch(49% 0.0179 153.51)",
+          "oklch(61% 0.0179 153.51)",
+          "oklch(72% 0.0179 153.51)",
+          "oklch(84% 0.0179 153.51)",
+          "oklch(95% 0.0179 153.51)"
+        ]
+      },
+      "selected": {
+        "role": "neutral",
+        "displayName": "Selected wash",
+        "canonical": "#f6fbe7",
+        "tonalRamp": [
+          "oklch(15% 0.0267 118.31)",
+          "oklch(26% 0.0267 118.31)",
+          "oklch(38% 0.0267 118.31)",
+          "oklch(49% 0.0267 118.31)",
+          "oklch(61% 0.0267 118.31)",
+          "oklch(72% 0.0267 118.31)",
+          "oklch(84% 0.0267 118.31)",
+          "oklch(95% 0.0267 118.31)"
+        ]
+      },
+      "current-class": {
+        "role": "neutral",
+        "displayName": "Current-class tint",
+        "canonical": "#e8f1d3",
+        "tonalRamp": [
+          "oklch(15% 0.0407 120.77)",
+          "oklch(26% 0.0407 120.77)",
+          "oklch(38% 0.0407 120.77)",
+          "oklch(49% 0.0407 120.77)",
+          "oklch(61% 0.0407 120.77)",
+          "oklch(72% 0.0407 120.77)",
+          "oklch(84% 0.0407 120.77)",
+          "oklch(95% 0.0407 120.77)"
+        ]
+      },
+      "error": {
+        "role": "tertiary",
+        "displayName": "Error red",
+        "canonical": "#a32937",
+        "tonalRamp": [
+          "oklch(15% 0.1574 19.46)",
+          "oklch(26% 0.1574 19.46)",
+          "oklch(38% 0.1574 19.46)",
+          "oklch(49% 0.1574 19.46)",
+          "oklch(61% 0.1574 19.46)",
+          "oklch(72% 0.1574 19.46)",
+          "oklch(84% 0.1574 19.46)",
+          "oklch(95% 0.1574 19.46)"
+        ]
+      },
+      "symbol-red": {
+        "role": "tertiary",
+        "displayName": "SET red",
+        "canonical": "#bd3b44",
+        "tonalRamp": [
+          "oklch(15% 0.1658 20.80)",
+          "oklch(26% 0.1658 20.80)",
+          "oklch(38% 0.1658 20.80)",
+          "oklch(49% 0.1658 20.80)",
+          "oklch(61% 0.1658 20.80)",
+          "oklch(72% 0.1658 20.80)",
+          "oklch(84% 0.1658 20.80)",
+          "oklch(95% 0.1658 20.80)"
+        ]
+      },
+      "symbol-green": {
+        "role": "tertiary",
+        "displayName": "SET green",
+        "canonical": "#23754f",
+        "tonalRamp": [
+          "oklch(15% 0.0994 159.11)",
+          "oklch(26% 0.0994 159.11)",
+          "oklch(38% 0.0994 159.11)",
+          "oklch(49% 0.0994 159.11)",
+          "oklch(61% 0.0994 159.11)",
+          "oklch(72% 0.0994 159.11)",
+          "oklch(84% 0.0994 159.11)",
+          "oklch(95% 0.0994 159.11)"
+        ]
+      },
+      "symbol-purple": {
+        "role": "tertiary",
+        "displayName": "SET purple",
+        "canonical": "#7546aa",
+        "tonalRamp": [
+          "oklch(15% 0.1560 302.80)",
+          "oklch(26% 0.1560 302.80)",
+          "oklch(38% 0.1560 302.80)",
+          "oklch(49% 0.1560 302.80)",
+          "oklch(61% 0.1560 302.80)",
+          "oklch(72% 0.1560 302.80)",
+          "oklch(84% 0.1560 302.80)",
+          "oklch(95% 0.1560 302.80)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "timer": {
+        "displayName": "Measured time",
+        "purpose": "Elapsed time and the final result; tabular numerals."
+      },
+      "headline": {
+        "displayName": "Compact heading",
+        "purpose": "Room and board headings."
+      },
+      "body": {
+        "displayName": "Clear copy",
+        "purpose": "Feedback and supporting instructions."
+      },
+      "label": {
+        "displayName": "Round label",
+        "purpose": "Compact state and progress labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "playing-card",
+        "value": "0 1px 3px #173d310a",
+        "purpose": "Faint separation of white cards from the board."
+      },
+      {
+        "name": "start-panel",
+        "value": "0 10px 28px #173d310a",
+        "purpose": "Start overlay above covered cards."
+      },
+      {
+        "name": "dialog",
+        "value": "0 15px 60px #173d311f",
+        "purpose": "Room and rules dialogs."
+      }
+    ],
+    "motion": [
+      {
+        "name": "card-background",
+        "value": "200ms",
+        "purpose": "Card wash and hover lift."
+      },
+      {
+        "name": "card-border",
+        "value": "150ms",
+        "purpose": "Card state border."
+      },
+      {
+        "name": "set-match",
+        "value": "500ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Accepted-set scale pulse from 1 to .96 to 1."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation:none; transition:none; scroll-behavior:auto",
+        "purpose": "System preference suppresses motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "1500px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1100px"
+      },
+      {
+        "name": "stacked",
+        "value": "800px"
+      },
+      {
+        "name": "mobile",
+        "value": "500px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Start or confirm a classroom round.",
+      "html": "<button class=\"ds-primary\">Start round</button>",
+      "css": ".ds-primary{font:600 14px \"DM Sans\",sans-serif;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 19px;background:var(--ink,#173d31);color:var(--paper,#fff);border:1px solid var(--ink,#173d31);border-radius:6px;transition:background .2s}.ds-primary:hover{background:#285b43}.ds-primary:focus-visible{outline:3px solid var(--ring,#23754f);outline-offset:4px}.ds-primary:disabled{opacity:.65}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Refresh cards and other supporting actions.",
+      "html": "<button class=\"ds-secondary\">Refresh cards</button>",
+      "css": ".ds-secondary{font:500 14px \"DM Sans\",sans-serif;display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 13px;background:transparent;color:var(--ink,#173d31);border:1px solid #a9bdae;border-radius:6px}.ds-secondary:hover{background:var(--board,#e7ece5)}.ds-secondary:focus-visible{outline:3px solid var(--ring,#23754f);outline-offset:4px}"
+    },
+    {
+      "name": "Room Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Class or room details in a dialog.",
+      "html": "<label class=\"ds-field-label\">Class name<input class=\"ds-field\" value=\"Period 1\" /></label>",
+      "css": ".ds-field-label{font:500 14px \"DM Sans\",sans-serif;color:var(--ink,#173d31)}.ds-field{display:block;width:100%;margin-top:8px;padding:11px 12px;font:400 16px/1.5 \"DM Sans\",sans-serif;background:var(--paper,#fff);color:var(--ink,#173d31);border:1px solid var(--input,#c4d0c7);border-radius:6px}.ds-field:focus-visible{outline:3px solid var(--ring,#23754f);outline-offset:4px}"
+    },
+    {
+      "name": "Mode Tabs",
+      "kind": "nav",
+      "refersTo": "mode-tabs",
+      "description": "Compact competition and practice switch.",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\" aria-label=\"Round mode\"><button class=\"ds-tab ds-active\" role=\"tab\" aria-selected=\"true\">Compete</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">Practice</button></div>",
+      "css": ".ds-tabs{display:inline-flex;height:42px;padding:4px;background:#e7ece5;border-radius:7px}.ds-tab{font:500 14px \"DM Sans\",sans-serif;padding:0 16px;background:transparent;color:var(--ink,#173d31);border:0;border-radius:4px}.ds-tab.ds-active{background:var(--ink,#173d31);color:var(--paper,#fff)}.ds-tab:hover:not(.ds-active){background:var(--paper,#fff)}.ds-tab:focus-visible{outline:3px solid var(--ring,#23754f);outline-offset:4px}"
+    },
+    {
+      "name": "Playing Card",
+      "kind": "card",
+      "refersTo": "playing-card",
+      "description": "A numbered physical card with clear selection states.",
+      "html": "<button class=\"ds-card\" aria-label=\"Card 1: one green open oval\"><span class=\"ds-number\">1</span><svg class=\"ds-symbol\" viewBox=\"0 0 34 56\" aria-hidden=\"true\"><path d=\"M17 8 C1 8 1 48 17 48 C33 48 33 8 17 8Z\" fill=\"none\" stroke=\"#23754f\" stroke-width=\"2.2\"/></svg></button>",
+      "css": ".ds-card{position:relative;display:grid;place-items:center;width:200px;aspect-ratio:1.45;padding:22px 12px;background:var(--paper,#fff);border:2px solid transparent;border-radius:8px;box-shadow:0 1px 3px #173d310a;transition:background .2s,border-color .15s,transform .2s}.ds-card:hover{border-color:#9cb5a3;transform:translateY(-2px)}.ds-card:focus-visible{outline:3px solid var(--ring,#23754f);outline-offset:4px}.ds-card[aria-pressed=true]{border-color:var(--ink,#173d31);background:#f6fbe7}.ds-number{position:absolute;left:11px;top:8px;font:600 12px \"DM Sans\",sans-serif;color:var(--quiet,#52665c)}.ds-symbol{height:62px;max-width:88%}@media(prefers-reduced-motion:reduce){.ds-card{transition:none}}"
+    },
+    {
+      "name": "Selection Slot",
+      "kind": "chip",
+      "refersTo": "selection-cell",
+      "description": "One of three confirmations above the board.",
+      "html": "<span class=\"ds-slot ds-picked\">7</span><span class=\"ds-slot\">\u2014</span>",
+      "css": ".ds-slot{display:inline-grid;place-items:center;width:29px;height:29px;margin-right:5px;border:1px solid var(--rule,#d6dfd8);border-radius:5px;font:600 13px \"DM Sans\",sans-serif;color:var(--quiet,#52665c)}.ds-slot.ds-picked{background:var(--ink,#173d31);border-color:var(--ink,#173d31);color:var(--paper,#fff)}"
+    },
+    {
+      "name": "Progress Cell",
+      "kind": "custom",
+      "refersTo": "progress-cell",
+      "description": "A compact receipt of each found set.",
+      "html": "<span class=\"ds-progress ds-done\">1</span><span class=\"ds-progress\">2</span><span class=\"ds-progress\">3</span>",
+      "css": ".ds-progress{display:inline-grid;place-items:center;width:27px;height:27px;margin-right:6px;border:1px solid var(--rule,#d6dfd8);border-radius:4px;font:400 12px \"DM Sans\",sans-serif;color:#62776a}.ds-progress.ds-done{background:var(--ink,#173d31);color:var(--lime,#deef95);border-color:var(--ink,#173d31)}"
+    },
+    {
+      "name": "Pizza Leader",
+      "kind": "custom",
+      "refersTo": "pizza-leader",
+      "description": "The strongest accent area identifies the fastest class.",
+      "html": "<section class=\"ds-leader\"><span>In the lead for pizza</span><h3>Period 1</h3><div><strong>00:42.8</strong><span>Oct 8, 2026</span></div></section>",
+      "css": ".ds-leader{font:400 13px \"DM Sans\",sans-serif;background:var(--lime,#deef95);color:var(--ink,#173d31);border-radius:8px;padding:21px 20px 20px;max-width:290px}.ds-leader h3{font-size:29px;font-weight:600;letter-spacing:-.03em;line-height:1.1;margin:19px 0;overflow-wrap:anywhere}.ds-leader div{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px}.ds-leader strong{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}.ds-leader div span{font-size:12px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The School Games Club / Race Timing Sheet",
+    "overview": "A light, practical playing table gives the twelve SET cards the most space. Evergreen type, precise elapsed time, and compact numbered markers make the game legible on a classroom projector. The adjacent standings read like a results sheet, with a lime pizza leader and restrained medal hierarchy.",
+    "keyCharacteristics": [
+      "Quiet green neutrals and crisp white cards.",
+      "Large tabular time beside visible set progress.",
+      "Compact controls, thin rules, and generous board space.",
+      "Competition emphasis carried by lime and rank, rather than decorative effects."
+    ],
+    "rules": [
+      {
+        "name": "The Competition Accent Rule",
+        "body": "Reserve the strongest lime area for the leader and successful set feedback; ordinary controls stay evergreen or neutral.",
+        "section": "colors"
+      },
+      {
+        "name": "The Measured Time Rule",
+        "body": "Preserve tabular numerals and the timer's hierarchy when adding results or elapsed-time states.",
+        "section": "typography"
+      },
+      {
+        "name": "The Board First Rule",
+        "body": "Keep the board and timer before standings in both visual and document order.",
+        "section": "layout"
+      }
+    ],
+    "dos": [
+      "Do keep the board and measured timer dominant.",
+      "Do use tabular numerals for every race result.",
+      "Do pair card color with shape, fill, count, and optional color names.",
+      "Do keep the current class identifiable in both color and text.",
+      "Do preserve visible focus, reduced motion, and the builder credit."
+    ],
+    "donts": [
+      "Don't add ornamental gradients or heavy shadows.",
+      "Don't turn every section into a raised card.",
+      "Don't use lime for routine controls or unrelated decoration.",
+      "Don't let long class names push measured times out of their rows."
+    ]
+  }
+}
