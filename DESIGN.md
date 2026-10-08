@@ -170,3 +170,7 @@ The [Duolingo league screen on Mobbin](https://mobbin.com/screens/f99db491-76b2-
 
 ## Saved rooms and round history
 The header provides a Saved rooms drawer-style dialog, while the current league has an explicit Save room control. Saved state uses the existing pale lime and check mark. A full-width round history follows the board and standings, with a quiet ruled table on desktop and two-column records on mobile so class, date, and time remain visible together. The archive reuses the same tabular numerals, evergreen text, secondary actions, and flat surfaces. Pagination reaches every round; export and reload stay at the history heading.
+
+## Account access
+
+The `/signin` page uses the same evergreen type, paper surface, quiet rules, and visible field focus as the classroom table. Sign in and Create account share a compact form with explicit labels, inline errors, and clear progress states. Saved rooms shows the signed-in account and a Sign out action. Account access supports email and password; copy must not imply email verification or password recovery.

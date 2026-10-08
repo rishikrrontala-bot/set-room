@@ -1,0 +1,6 @@
+import { drizzle } from 'drizzle-orm/libsql';
+import { migrate } from 'drizzle-orm/libsql/migrator';
+import { createClient } from '@libsql/client';
+if(!process.env.TURSO_DATABASE_URL)throw new Error('Set TURSO_DATABASE_URL before applying migrations.');
+const client=createClient({url:process.env.TURSO_DATABASE_URL,authToken:process.env.TURSO_AUTH_TOKEN});
+try{await migrate(drizzle(client),{migrationsFolder:'./drizzle'});console.log('Room database migrations applied.');}finally{client.close();}
