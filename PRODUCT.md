@@ -16,4 +16,6 @@ Daily common puzzle, class competition, server-saved results, daily and all-time
 - Never lose a completed time silently.
 - Credit Rishik Rontala visibly.
 
-Manual Refresh cards deals a new solvable board without resetting the timer or found-set count. Ranked rounds permit up to 100 manual refreshes. Repeated combinations may be found again.
+Manual Refresh cards deals a new solvable board without resetting the timer or found-set count. Ranked rounds permit up to five manual refreshes. Repeated combinations may be found again.
+
+Saved rooms belong to the signed-in account and can reopen a league on another device. Room history includes every started ranked round, with class, date, goal, progress, completion time, and status. Older records are paginated without truncation, and export includes all rounds. Removing a saved-room shortcut does not delete its league or scores. The user chose to keep the existing difficulty; no probability control is included.

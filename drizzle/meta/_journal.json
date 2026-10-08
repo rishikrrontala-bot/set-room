@@ -15,6 +15,13 @@
       "when": 1791484362357,
       "tag": "0001_nebulous_quentin_quire",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1791489398716,
+      "tag": "0002_eager_mauler",
+      "breakpoints": true
     }
   ]
 }

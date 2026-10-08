@@ -167,3 +167,6 @@ The [Duolingo league screen on Mobbin](https://mobbin.com/screens/f99db491-76b2-
 - Don't turn every section into a raised card.
 - Don't use lime for routine controls or unrelated decoration.
 - Don't let long class names push measured times out of their rows.
+
+## Saved rooms and round history
+The header provides a Saved rooms drawer-style dialog, while the current league has an explicit Save room control. Saved state uses the existing pale lime and check mark. A full-width round history follows the board and standings, with a quiet ruled table on desktop and two-column records on mobile so class, date, and time remain visible together. The archive reuses the same tabular numerals, evergreen text, secondary actions, and flat surfaces. Pagination reaches every round; export and reload stay at the history heading.

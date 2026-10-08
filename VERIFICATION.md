@@ -10,4 +10,11 @@ Verified locally on October 8, 2026.
 
 WebMCP is feature-detected and exposes read_class_standings when supported. The test browser did not provide document.modelContext, so native WebMCP runtime validation was unavailable. It is optional and has no effect on gameplay.
 
-QA leagues, synthetic race times, and test screenshots are local only. Production starts with an empty database. Hosted publication status is verified separately through Sites.
+QA leagues, synthetic race times, and test screenshots are local only. Existing production rooms and results are preserved by additive migrations. Hosted publication status is verified separately through Sites.
+
+## Saved-room and history update
+- Account save is idempotent; sign-in is required. Reopening in a fresh signed-in browser session shows the same saved room. Removing the shortcut leaves the room and scores intact.
+- A 56-round local fixture spans completed, ended, and unfinished rounds. History paging returned 56 unique records, and the exported CSV contained all 56.
+- New round write tokens are required for claims, refreshes, and end. Missing/wrong tokens are rejected; history never exposes the token. Claim and refresh retries stay idempotent.
+- Actual browser play completed all six sets and saved the official result without a manual refresh. Five refreshes succeeded; the sixth was rejected. An ended round rejects more refreshes.
+- Independent API/security review found no remaining blockers. Type check, six pure-rule tests, and production build passed. Desktop and 390px mobile showed no page errors or horizontal page overflow.
