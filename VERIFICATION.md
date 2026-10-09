@@ -1,5 +1,9 @@
 # Verification
 
+## Persistent leaderboard and daily reset — October 9, 2026
+
+Original standings now span puzzle numbers. The production build, eleven rule tests, and muted local browser flow passed: the fastest class remains visible after dealing another numbered puzzle, score/history saving still works, and shared links, class switching, CSV, practice, and mobile layout remain functional. A simulated server-day rollover empties Today while keeping the same winner in All time; polling and visibility restoration refresh the authoritative server date. A local database fixture verified that a faster previous-day result and a slower current-day result both survive the server ranking query, with Today selecting the current-day winner. No records are deleted for daily resets. This supersedes the per-puzzle leaderboard behavior documented below. Live publication verification is pending.
+
 ## Original board refresh — October 9, 2026
 
 Eleven pure-logic tests and the production build passed. The screenshot board has exactly six sets: 1–8–11, 2–11–12, 3–10–12, 4–5–9, 4–6–7, and 7–9–11. Another 125 deterministic daily/numbered boards were checked for exactly six sets and twelve unique cards.

@@ -15,17 +15,17 @@ const response=(value:unknown,status=200)=>Response.json(value,{status,headers:{
 type State={puzzle?:number;board:Card[];sets:number[][];positions?:number[][];refreshIds?:string[];writeToken?:string};
 type Attempt={id:string;day:string;target:number;game_mode:GameMode;answers:string|null;started_at:number;state:string|null;elapsed_ms:number|null;finished_at:number|null;ended_at:number|null};
 function result(attempt:Attempt,state:State){return {gameMode:attempt.game_mode,puzzle:state.puzzle||0,board:state.board,sets:state.sets,positions:state.positions||[],step:state.sets.length,refreshes:state.refreshIds?.length||0,elapsedMs:attempt.elapsed_ms,finishedAt:attempt.finished_at,saved:attempt.elapsed_ms!==null};}
-async function roomData(code:string,puzzle:number){
- const db=database(),room=await db.prepare('SELECT code,name,classes FROM rooms WHERE code=?').bind(code).first<{code:string;name:string;classes:string}>();
+async function roomData(code:string){
+ const today=puzzleDay(),db=database(),room=await db.prepare('SELECT code,name,classes FROM rooms WHERE code=?').bind(code).first<{code:string;name:string;classes:string}>();
  if(!room)return null;
  // Return the records needed for daily and all-time standings without truncating old winners.
  const scores=await db.prepare(`WITH ranked AS (
   SELECT id,class_name AS className,day,target,game_mode AS gameMode,COALESCE(json_extract(state,'$.puzzle'),0) AS puzzle,elapsed_ms AS elapsedMs,finished_at AS finishedAt,
    ROW_NUMBER() OVER(PARTITION BY class_name,target,game_mode ORDER BY elapsed_ms,finished_at,id) AS all_rank,
    ROW_NUMBER() OVER(PARTITION BY class_name,target,game_mode,day ORDER BY elapsed_ms,finished_at,id) AS day_rank
-  FROM attempts WHERE room_code=? AND elapsed_ms IS NOT NULL AND (game_mode<>'original' OR COALESCE(json_extract(state,'$.puzzle'),0)=?)
- ) SELECT id,className,day,target,gameMode,puzzle,elapsedMs,finishedAt FROM ranked WHERE all_rank=1 OR(day=? AND day_rank=1)`).bind(code,puzzle,puzzleDay()).all();
- return {...room,classes:JSON.parse(room.classes),scores:scores.results};
+  FROM attempts WHERE room_code=? AND elapsed_ms IS NOT NULL
+ ) SELECT id,className,day,target,gameMode,puzzle,elapsedMs,finishedAt FROM ranked WHERE all_rank=1 OR(day=? AND day_rank=1)`).bind(code,today).all();
+ return {...room,day:today,classes:JSON.parse(room.classes),scores:scores.results};
 }
 export async function GET(request:Request){try{
  const url=new URL(request.url),raw=url.searchParams.get('room');if(!raw)return response({day:puzzleDay()});
@@ -42,7 +42,7 @@ export async function GET(request:Request){try{
   return response({rounds,total:count?.total||0,nextCursor:rows.length>50&&last?JSON.stringify({time:last.started_at,id:last.id}):null});
  }
  const puzzle=z.coerce.number().int().min(0).max(1000).safeParse(url.searchParams.get('puzzle')||0);if(!puzzle.success)return response({error:'Choose a valid puzzle number.'},400);
- const room=await roomData(code,puzzle.data);return room?response(room):response({error:'That room was not found. Check the code.'},404);
+ const room=await roomData(code);return room?response(room):response({error:'That room was not found. Check the code.'},404);
 }catch(error){console.error('SET load',error);return response({error:'The room is unavailable. Please try again.'},503);}}
 export async function POST(request:Request){try{
  const origin=request.headers.get('Origin');if(origin&&origin!==new URL(request.url).origin)return response({error:'Use the game page to submit results.'},403);
