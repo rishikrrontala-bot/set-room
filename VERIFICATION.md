@@ -4,7 +4,7 @@
 
 Nine pure-logic tests and the Next.js production build passed. A muted browser test of the local production build verified exactly six sets on an unchanged board, rejection of duplicate triples in either selection order, shared-card sets, idempotent claim retries, rejection of Original refreshes, class switching with both cancelled and accepted confirmation, preserved ended-round history, legacy requests defaulting to Refill, five-refresh enforcement and retry behavior, separate Original/Refill leaderboard records, CSV mode labels, and all six practice hints completing without saved attempts. Desktop and 390px mobile screenshots were reviewed; there were no page errors or horizontal page overflow.
 
-The additive migration preserved all 13 existing production rounds and the existing account bookmark. Old records default to Refill; Original scores are ranked separately. Public verification and publication of the new build are pending.
+The additive migration preserved all 13 existing production rounds and the existing account bookmark. Old records default to Refill; Original scores are ranked separately. The staged production deployment passed six actual fixed-board claims, duplicate and refresh rejection, idempotent retries, and automatic official time/history saving. The same full browser flow then passed on the public Vercel URL after promotion, including confirmed/cancelled class switching, separate leaderboards, history/CSV, six practice hints without database writes, and mobile layout. Synthetic production rooms and rounds were removed afterward. The published runtime source is commit `d8a77eda437daaf8b1668f6e5c872c522dd52404`; the remaining commit only records this verification.
 
 ## Vercel migration status — October 8, 2026
 
