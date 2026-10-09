@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {card,dailyBoard,findSets,isSet,setKey,puzzleDay,replaceMatched,advanceRound,alreadyFound,availableSets} from './set.ts';
+import {card,dailyBoard,findSets,isSet,setKey,puzzleDay,replaceMatched,advanceRound,alreadyFound,availableSets,originalBoard} from './set.ts';
 test('all feature combinations obey the SET rule',()=>{assert.equal(isSet([card(0),card(40),card(80)]),true);assert.equal(isSet([card(0),card(0),card(0)]),false);assert.equal(isSet([card(0),card(1),card(3)]),false);assert.equal(isSet([card(0),card(1),card(2)]),true);});
 test('daily boards are deterministic, unique, and contain exactly six sets',()=>{for(let i=1;i<=60;i++){const day=`2026-test-${i}`;const board=dailyBoard(day);assert.equal(board.length,12);assert.equal(new Set(board.map(c=>c.id)).size,12);assert.equal(findSets(board).length,6);assert.deepEqual(board,dailyBoard(day));}assert.notDeepEqual(dailyBoard('2026-10-08'),dailyBoard('2026-10-09'));});
 test('a repeated combination remains a valid match on a later board',()=>{const ids=[46,53,48];assert.ok(isSet(ids.map(card)));assert.ok(isSet([...ids].reverse().map(card)));assert.equal(setKey(ids),setKey([...ids].reverse()));});
@@ -27,4 +27,13 @@ test('refill mode still accepts a combination when it appears again',()=>{
  const board=dailyBoard('refill-repeat'),ids=findSets(board)[0],found=[ids];
  const next=advanceRound(board,found,[...ids].reverse(),'refill',6,'repeat-regression');
  assert.equal(next.sets.length,2);assert.equal(found.length,1);assert.ok(findSets(next.board).length>0);assert.equal(availableSets(board,found,'refill').length,6);
+});
+
+test('the screenshot board has exactly the six advertised overlapping sets',()=>{
+ const board=[20,74,48,28,52,78,14,34,40,11,66,61].map(card);
+ assert.deepEqual(findSets(board).map(ids=>ids.map(id=>board.findIndex(c=>c.id===id)+1)),[[1,8,11],[2,11,12],[3,10,12],[4,5,9],[4,6,7],[7,9,11]]);
+});
+test('fresh Original puzzles contain exactly six sets and are shared deterministically across classes',()=>{
+ for(let day=0;day<25;day++){let previous=originalBoard('refresh-test-'+day,0);for(let puzzle=1;puzzle<=5;puzzle++){const board=originalBoard('refresh-test-'+day,puzzle);assert.equal(findSets(board).length,6);assert.equal(new Set(board.map(c=>c.id)).size,12);assert.deepEqual(board,originalBoard('refresh-test-'+day,puzzle));assert.notDeepEqual(board,previous);previous=board;}}
+ assert.deepEqual(originalBoard('2026-10-09',0),dailyBoard('2026-10-09'));assert.throws(()=>originalBoard('x',-1));assert.throws(()=>originalBoard('x',1001));
 });

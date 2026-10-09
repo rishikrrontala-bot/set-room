@@ -30,3 +30,8 @@ export function advanceRound(board:Card[],sets:number[][],ids:number[],mode:Game
  const nextSets=[...sets,[...ids]],complete=nextSets.length===target;
  return {sets:nextSets,complete,board:mode==='original'||complete?board:replaceMatched(board,ids,seed)};
 }
+
+export function originalBoard(day:string,puzzle=0):Card[] {
+ if(!Number.isInteger(puzzle)||puzzle<0||puzzle>1000)throw new Error('Choose a puzzle from 1 to 1001.');
+ return dailyBoard(puzzle===0?day:`${day}:original:${puzzle}`);
+}

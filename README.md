@@ -10,7 +10,7 @@ Create a class league, enter class names one per line, and share its room code/l
 
 Create an account or sign in with email and password, open your league, then choose Save room to keep it in your account. The shortcut remains saved after closing the tab or signing out. Open Saved rooms in the header to return on another device; sign out from the same dialog. Playing by room code does not require an account. Email ownership is not verified, and password recovery is not available.
 
-The full round history includes completed, ended, and unfinished rounds; Load older rounds reaches every record, and CSV export includes all rounds. Practice provides hints and never saves ranked scores. Refill and Sprint offer Refresh cards, which deals a new solvable board without resetting the timer or found-set count. Those ranked rounds permit up to five manual refreshes; Original keeps the same board throughout.
+The full round history includes completed, ended, and unfinished rounds; Load older rounds reaches every record, and CSV export includes all rounds. Practice provides hints and never saves ranked scores. Refill and Sprint offer Refresh cards, which deals a new solvable board without resetting the timer or found-set count. Those ranked rounds permit up to five manual refreshes; Original keeps cards in place after matches. Its Refresh board button above the table ends the active round and starts a new numbered puzzle with a fresh timer and six sets. Each puzzle has separate Original standings; the room link includes the puzzle number so other screens receive the same board.
 
 ## Local development
 

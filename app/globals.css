@@ -24,3 +24,5 @@
 .saved-account{display:flex;align-items:center;justify-content:space-between;gap:15px;font-size:12px;color:var(--quiet);margin-top:20px;padding-top:16px;border-top:1px solid var(--rule)}
 
 .round-guide{font-size:13px;line-height:1.6;color:var(--quiet);margin:12px 0 0}.round-guide span{display:block;margin-top:3px}.setup-choices{min-width:0}.choice[data-slot=select-trigger] [data-slot=select-value]{min-width:0;overflow:hidden;text-overflow:ellipsis}
+
+.setup-choices{flex-wrap:wrap}.original-refresh{font-size:13px}.original-refresh:disabled{opacity:.5}@media(max-width:500px){.original-refresh{width:100%}}

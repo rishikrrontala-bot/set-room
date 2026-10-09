@@ -177,3 +177,5 @@ The `/signin` page uses the same evergreen type, paper surface, quiet rules, and
 
 ## Original classroom mode
 Original is the default game version, alongside Refill and Sprint in the existing compact menu. A quiet two-line guide explains the fixed board and class switching. Found sets stay in the receipt list; individual cards remain usable because different sets can share cards. Class selection remains available during a round, with a confirmation before ending it. Standings, history, and export label game versions separately.
+
+Original’s Refresh board button sits in the toolbar above the cards. Confirmation explicitly says the current round ends and the timer restarts. A puzzle number in the guide, standings, and history keeps the shared competition understandable; cards still stay in place after each valid set.

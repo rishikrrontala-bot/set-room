@@ -1,5 +1,11 @@
 # Verification
 
+## Original board refresh — October 9, 2026
+
+Eleven pure-logic tests and the production build passed. The screenshot board has exactly six sets: 1–8–11, 2–11–12, 3–10–12, 4–5–9, 4–6–7, and 7–9–11. Another 125 deterministic daily/numbered boards were checked for exactly six sets and twelve unique cards.
+
+The muted local production-browser flow checks the refresh button above the cards, cancelling/confirming refresh, restarting the timer and clearing progress, preserving the ended attempt, completing all six fixed-board sets, rejecting repeated triples, immediate leaderboard updates, separate standings for each numbered puzzle, shared puzzle links, changing classes, CSV puzzle labels, practice hints without saved attempts, and 390px mobile layout. Publication verification is pending.
+
 ## Original classroom mode — October 9, 2026
 
 Nine pure-logic tests and the Next.js production build passed. A muted browser test of the local production build verified exactly six sets on an unchanged board, rejection of duplicate triples in either selection order, shared-card sets, idempotent claim retries, rejection of Original refreshes, class switching with both cancelled and accepted confirmation, preserved ended-round history, legacy requests defaulting to Refill, five-refresh enforcement and retry behavior, separate Original/Refill leaderboard records, CSV mode labels, and all six practice hints completing without saved attempts. Desktop and 390px mobile screenshots were reviewed; there were no page errors or horizontal page overflow.
