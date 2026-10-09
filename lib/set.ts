@@ -17,3 +17,16 @@ export function replaceMatched(board:Card[],ids:number[],seed:string):Card[] {
  // Keeping the selected triple is a valid, solvable bounded fallback. Repeats are allowed.
  return board;
 }
+
+export type GameMode = 'original' | 'refill';
+export function roundLabel(mode:GameMode,target:number) { return mode==='original'?'Original':target===3?'Sprint':'Refill'; }
+export function alreadyFound(sets:number[][],ids:number[]) { return sets.some(set=>setKey(set)===setKey(ids)); }
+export function availableSets(board:Card[],sets:number[][],mode:GameMode) { return findSets(board).filter(ids=>mode==='refill'||!alreadyFound(sets,ids)); }
+export function advanceRound(board:Card[],sets:number[][],ids:number[],mode:GameMode,target:number,seed:string) {
+ if(mode==='original'&&target!==6)throw new Error('Original rounds require all six sets.');
+ if(sets.length>=target)throw new Error('This round is already complete.');
+ if(!ids.every(id=>board.some(c=>c.id===id))||!isSet(ids.map(card)))throw new Error('Choose a valid set from this board.');
+ if(mode==='original'&&alreadyFound(sets,ids))throw new Error('You already found that set. Find a different combination.');
+ const nextSets=[...sets,[...ids]],complete=nextSets.length===target;
+ return {sets:nextSets,complete,board:mode==='original'||complete?board:replaceMatched(board,ids,seed)};
+}

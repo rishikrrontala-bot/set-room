@@ -1,0 +1,1 @@
+ALTER TABLE `attempts` ADD `game_mode` text DEFAULT 'refill' NOT NULL;

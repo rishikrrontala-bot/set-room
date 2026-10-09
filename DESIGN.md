@@ -144,7 +144,7 @@ Controls and fields use gently rounded corners. Cards are slightly softer; the b
 
 - **Buttons and fields:** evergreen primary actions; transparent outlined secondary actions; quiet text actions. Fields sit on paper with a subdued border. Focus is a three-pixel symbol-green outline with a four-pixel offset. Disabled actions reduce opacity.
 - **Mode and standings tabs:** modes use a compact segmented surface with an evergreen active segment. Today / All time use text and a thin active underline.
-- **Playing cards:** white, numbered, with keyboard labels at the opposite corner. Hover lifts two pixels. Selection adds an evergreen outline, pale wash, and check; a valid set briefly fills lime before its three positions refill. Hints use a separate olive outline.
+- **Playing cards:** white, numbered, with keyboard labels at the opposite corner. Hover lifts two pixels. Selection adds an evergreen outline, pale wash, and check; a valid set briefly fills lime while cards stay in Original or its three positions refill in Refill/Sprint. Hints use a separate olive outline.
 - **Selection and progress:** three numbered slots confirm the cards being checked. Six numbered progress cells become evergreen with lime numerals as sets are found; found sets also appear as miniature-card receipts.
 - **Standings:** the lime pizza panel leads with the class name, measured time, and date. Medal ranks establish the first three places; the current class has a pale tint and explicit label. Unplayed classes remain text rows. Empty standings use a small podium illustration and honest empty copy.
 - **Completion and feedback:** the finish panel presents the final time and save state. Inline feedback explains invalid attributes; refresh remains a secondary action while elapsed time and progress continue. The footer visibly credits Rishik Rontala.
@@ -174,3 +174,6 @@ The header provides a Saved rooms drawer-style dialog, while the current league 
 ## Account access
 
 The `/signin` page uses the same evergreen type, paper surface, quiet rules, and visible field focus as the classroom table. Sign in and Create account share a compact form with explicit labels, inline errors, and clear progress states. Saved rooms shows the signed-in account and a Sign out action. Account access supports email and password; copy must not imply email verification or password recovery.
+
+## Original classroom mode
+Original is the default game version, alongside Refill and Sprint in the existing compact menu. A quiet two-line guide explains the fixed board and class switching. Found sets stay in the receipt list; individual cards remain usable because different sets can share cards. Class selection remains available during a round, with a confirmation before ending it. Standings, history, and export label game versions separately.

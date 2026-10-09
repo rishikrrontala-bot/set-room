@@ -1,5 +1,11 @@
 # Verification
 
+## Original classroom mode — October 9, 2026
+
+Nine pure-logic tests and the Next.js production build passed. A muted browser test of the local production build verified exactly six sets on an unchanged board, rejection of duplicate triples in either selection order, shared-card sets, idempotent claim retries, rejection of Original refreshes, class switching with both cancelled and accepted confirmation, preserved ended-round history, legacy requests defaulting to Refill, five-refresh enforcement and retry behavior, separate Original/Refill leaderboard records, CSV mode labels, and all six practice hints completing without saved attempts. Desktop and 390px mobile screenshots were reviewed; there were no page errors or horizontal page overflow.
+
+The additive migration preserved all 13 existing production rounds and the existing account bookmark. Old records default to Refill; Original scores are ranked separately. Public verification and publication of the new build are pending.
+
 ## Vercel migration status — October 8, 2026
 
 Canonical live URL: [Set Room](https://set-room.vercel.app).

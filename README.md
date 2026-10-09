@@ -1,16 +1,16 @@
 # Set Room
 
-A classroom SET competition built by Rishik Rontala. Each day, every class receives the same twelve cards with exactly six sets. Classic rounds finish after six sets; sprint rounds finish after three. After a match, its three cards refill and another set is guaranteed. Repeated combinations count when they appear again.
+A classroom SET competition built by Rishik Rontala. Each day, every class receives the same twelve cards with exactly six sets. Original is the default: find all six distinct sets on one fixed twelve-card board. Matched cards stay in place, shared cards can appear in multiple sets, and repeated triples do not count again. Refill rounds also finish after six sets and Sprint after three; those modes replace matched cards, guarantee another set, and allow repeated combinations when they reappear.
 
 Live app: [Set Room](https://set-room.vercel.app).
 
 ## Use
 
-Create a class league, enter class names one per line, and share its room code/link with the teacher’s other screens. Select the class and round length, then start. Each match is verified and saved by the server. The timer stops after the final valid set and the server saves the official time with the class and New York puzzle date. The leaderboard shows each class’s best daily or all-time result and highlights the pizza leader.
+Create a class league, enter class names one per line, and share its room code/link with the teacher’s other screens. Select the class and game version, then start. Classes can be changed directly from the class menu; switching during an active round asks for confirmation, ends that round, and preserves its progress in history. Each match is verified and saved by the server. The timer stops after the final valid set and the server saves the official time with the class and New York puzzle date. The leaderboard shows each class’s best daily or all-time result and highlights the pizza leader.
 
-Choose Save room, then create an account or sign in with email and password to keep a league in your account. Open Saved rooms in the header to return on another device; sign out from the same dialog. Playing by room code does not require an account. Email ownership is not verified, and password recovery is not available.
+Create an account or sign in with email and password, open your league, then choose Save room to keep it in your account. The shortcut remains saved after closing the tab or signing out. Open Saved rooms in the header to return on another device; sign out from the same dialog. Playing by room code does not require an account. Email ownership is not verified, and password recovery is not available.
 
-The full round history includes completed, ended, and unfinished rounds; Load older rounds reaches every record, and CSV export includes all rounds. Practice provides hints and never saves ranked scores. Refresh cards deals a new solvable board without resetting the timer or found-set count. Ranked rounds permit up to five manual refreshes.
+The full round history includes completed, ended, and unfinished rounds; Load older rounds reaches every record, and CSV export includes all rounds. Practice provides hints and never saves ranked scores. Refill and Sprint offer Refresh cards, which deals a new solvable board without resetting the timer or found-set count. Those ranked rounds permit up to five manual refreshes; Original keeps the same board throughout.
 
 ## Local development
 

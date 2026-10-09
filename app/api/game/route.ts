@@ -1,30 +1,30 @@
 import { z } from 'zod';
 import { database } from '@/lib/storage';
-import { card,dailyBoard,isSet,puzzleDay,replaceMatched,setKey,type Card } from '@/lib/set';
+import { card,dailyBoard,isSet,puzzleDay,advanceRound,alreadyFound,setKey,type Card,type GameMode } from '@/lib/set';
 export const dynamic='force-dynamic';
 const codeSchema=z.string().regex(/^[A-Z2-9]{6}$/);
 const triple=z.tuple([z.number().int().min(0).max(80),z.number().int().min(0).max(80),z.number().int().min(0).max(80)]);
 const bodySchema=z.discriminatedUnion('action',[
  z.object({action:z.literal('create'),name:z.string().trim().min(1).max(70),classes:z.array(z.string().trim().min(1).max(40)).min(1).max(20)}),
- z.object({action:z.literal('start'),code:codeSchema,className:z.string().min(1).max(40),target:z.union([z.literal(3),z.literal(6)])}),
+ z.object({action:z.literal('start'),code:codeSchema,className:z.string().min(1).max(40),target:z.union([z.literal(3),z.literal(6)]),gameMode:z.enum(['original','refill']).default('refill')}),
  z.object({action:z.literal('claim'),id:z.string().uuid(),step:z.number().int().min(0).max(5),ids:triple,token:z.string().uuid().optional()}),
  z.object({action:z.literal('refresh'),id:z.string().uuid(),requestId:z.string().uuid(),token:z.string().uuid().optional()}),
  z.object({action:z.literal('end'),id:z.string().uuid(),token:z.string().uuid().optional()})
 ]);
 const response=(value:unknown,status=200)=>Response.json(value,{status,headers:{'Cache-Control':'no-store'}});
 type State={board:Card[];sets:number[][];positions?:number[][];refreshIds?:string[];writeToken?:string};
-type Attempt={id:string;day:string;target:number;answers:string|null;started_at:number;state:string|null;elapsed_ms:number|null;finished_at:number|null;ended_at:number|null};
-function result(attempt:Attempt,state:State){return {board:state.board,sets:state.sets,positions:state.positions||[],step:state.sets.length,refreshes:state.refreshIds?.length||0,elapsedMs:attempt.elapsed_ms,finishedAt:attempt.finished_at,saved:attempt.elapsed_ms!==null};}
+type Attempt={id:string;day:string;target:number;game_mode:GameMode;answers:string|null;started_at:number;state:string|null;elapsed_ms:number|null;finished_at:number|null;ended_at:number|null};
+function result(attempt:Attempt,state:State){return {gameMode:attempt.game_mode,board:state.board,sets:state.sets,positions:state.positions||[],step:state.sets.length,refreshes:state.refreshIds?.length||0,elapsedMs:attempt.elapsed_ms,finishedAt:attempt.finished_at,saved:attempt.elapsed_ms!==null};}
 async function roomData(code:string){
  const db=database(),room=await db.prepare('SELECT code,name,classes FROM rooms WHERE code=?').bind(code).first<{code:string;name:string;classes:string}>();
  if(!room)return null;
  // Return the records needed for daily and all-time standings without truncating old winners.
  const scores=await db.prepare(`WITH ranked AS (
-  SELECT id,class_name AS className,day,target,elapsed_ms AS elapsedMs,finished_at AS finishedAt,
-   ROW_NUMBER() OVER(PARTITION BY class_name,target ORDER BY elapsed_ms,finished_at,id) AS all_rank,
-   ROW_NUMBER() OVER(PARTITION BY class_name,target,day ORDER BY elapsed_ms,finished_at,id) AS day_rank
+  SELECT id,class_name AS className,day,target,game_mode AS gameMode,elapsed_ms AS elapsedMs,finished_at AS finishedAt,
+   ROW_NUMBER() OVER(PARTITION BY class_name,target,game_mode ORDER BY elapsed_ms,finished_at,id) AS all_rank,
+   ROW_NUMBER() OVER(PARTITION BY class_name,target,game_mode,day ORDER BY elapsed_ms,finished_at,id) AS day_rank
   FROM attempts WHERE room_code=? AND elapsed_ms IS NOT NULL
- ) SELECT id,className,day,target,elapsedMs,finishedAt FROM ranked WHERE all_rank=1 OR(day=? AND day_rank=1)`).bind(code,puzzleDay()).all();
+ ) SELECT id,className,day,target,gameMode,elapsedMs,finishedAt FROM ranked WHERE all_rank=1 OR(day=? AND day_rank=1)`).bind(code,puzzleDay()).all();
  return {...room,classes:JSON.parse(room.classes),scores:scores.results};
 }
 export async function GET(request:Request){try{
@@ -37,7 +37,7 @@ export async function GET(request:Request){try{
   if(cursorRaw){try{const parsed=z.object({time:z.number().int().nonnegative().max(Number.MAX_SAFE_INTEGER),id:z.string().uuid()}).safeParse(JSON.parse(cursorRaw));if(!parsed.success)throw new Error();cursor=parsed.data;}catch{return response({error:'Invalid history page. Reload the history.'},400);}}
   const statement=cursor?db.prepare('SELECT * FROM attempts WHERE room_code=? AND (started_at<? OR(started_at=? AND id<?)) ORDER BY started_at DESC,id DESC LIMIT 51').bind(code,cursor.time,cursor.time,cursor.id):db.prepare('SELECT * FROM attempts WHERE room_code=? ORDER BY started_at DESC,id DESC LIMIT 51').bind(code);
   const rows=(await statement.all<Attempt&{class_name:string}>()).results,visible=rows.slice(0,50),last=visible.at(-1);
-  const rounds=visible.map(a=>({id:a.id,className:a.class_name,day:a.day,target:a.target,startedAt:a.started_at,finishedAt:a.finished_at,endedAt:a.ended_at,elapsedMs:a.elapsed_ms,found:a.state?(JSON.parse(a.state) as State).sets.length:JSON.parse(a.answers||'[]').length}));
+  const rounds=visible.map(a=>({id:a.id,className:a.class_name,day:a.day,target:a.target,gameMode:a.game_mode,startedAt:a.started_at,finishedAt:a.finished_at,endedAt:a.ended_at,elapsedMs:a.elapsed_ms,found:a.state?(JSON.parse(a.state) as State).sets.length:JSON.parse(a.answers||'[]').length}));
   const count=await db.prepare('SELECT COUNT(*) AS total FROM attempts WHERE room_code=?').bind(code).first<{total:number}>();
   return response({rounds,total:count?.total||0,nextCursor:rows.length>50&&last?JSON.stringify({time:last.started_at,id:last.id}):null});
  }
@@ -55,11 +55,12 @@ export async function POST(request:Request){try{
   return response({error:'Could not create the room. Try again.'},503);
  }
  if(input.action==='start'){
+  if(input.gameMode==='original'&&input.target!==6)return response({error:'Original rounds require all six sets.'},400);
   const room=await db.prepare('SELECT classes FROM rooms WHERE code=?').bind(input.code).first<{classes:string}>();
   if(!room||!JSON.parse(room.classes).includes(input.className))return response({error:'Select one of this room’s classes.'},400);
   const id=crypto.randomUUID(),day=puzzleDay(),startedAt=Date.now(),board=dailyBoard(day),token=crypto.randomUUID(),state=JSON.stringify({board,sets:[],writeToken:token});
-  await db.prepare('INSERT INTO attempts(id,room_code,class_name,day,target,started_at,state) VALUES(?,?,?,?,?,?,?)').bind(id,input.code,input.className,day,input.target,startedAt,state).run();
-  return response({id,board,day,startedAt,step:0,refreshes:0,token});
+  await db.prepare('INSERT INTO attempts(id,room_code,class_name,day,target,game_mode,started_at,state) VALUES(?,?,?,?,?,?,?,?)').bind(id,input.code,input.className,day,input.target,input.gameMode,startedAt,state).run();
+  return response({id,board,day,gameMode:input.gameMode,startedAt,step:0,refreshes:0,token});
  }
  const attempt=await db.prepare('SELECT * FROM attempts WHERE id=?').bind(input.id).first<Attempt>();
  if(!attempt||!attempt.state)return response({error:'This round is no longer available. Start a new round.'},404);
@@ -71,6 +72,7 @@ export async function POST(request:Request){try{
  }
  if(attempt.ended_at!==null)return response({error:'This round has ended. Start another round.'},400);
  if(input.action==='refresh'){
+  if(attempt.game_mode==='original')return response({error:'Original rounds keep the same board. Find all six sets, or end this round to start again.'},400);
   if(attempt.elapsed_ms!==null)return response({error:'This round is complete. Start another round to play again.'},400);
   if(Date.now()-attempt.started_at>86400000)return response({error:'This round has expired. Start another round.'},400);
   const refreshIds=state.refreshIds||[];
@@ -85,7 +87,8 @@ export async function POST(request:Request){try{
  if(input.step!==current||attempt.elapsed_ms!==null)return response({error:'The board changed. Retry the current match.'},409);
  if(Date.now()-attempt.started_at>86400000)return response({error:'This round has expired. Start a new round.'},400);
  if(!input.ids.every(id=>state.board.some(c=>c.id===id))||!isSet(input.ids.map(card)))return response({error:'Choose three different cards that form a set on the current board.'},400);
- const sets=[...state.sets,input.ids],complete=sets.length===attempt.target,board=complete?state.board:replaceMatched(state.board,input.ids,`${attempt.day}:${current}`),nextState=JSON.stringify({...state,board,sets,positions:[...(state.positions||[]),input.ids.map(id=>state.board.findIndex(c=>c.id===id)+1).sort((a,b)=>a-b)]}),finishedAt=complete?Date.now():null,elapsedMs=finishedAt===null?null:finishedAt-attempt.started_at;
+ if(attempt.game_mode==='original'&&alreadyFound(state.sets,input.ids))return response({error:'You already found that set. Find a different combination.'},400);
+ const {sets,complete,board}=advanceRound(state.board,state.sets,input.ids,attempt.game_mode,attempt.target,`${attempt.day}:${current}`),nextState=JSON.stringify({...state,board,sets,positions:[...(state.positions||[]),input.ids.map(id=>state.board.findIndex(c=>c.id===id)+1).sort((a,b)=>a-b)]}),finishedAt=complete?Date.now():null,elapsedMs=finishedAt===null?null:finishedAt-attempt.started_at;
  const updated=await db.prepare('UPDATE attempts SET state=?,finished_at=?,elapsed_ms=?,answers=? WHERE id=? AND state=? AND elapsed_ms IS NULL AND ended_at IS NULL').bind(nextState,finishedAt,elapsedMs,JSON.stringify(sets),attempt.id,attempt.state).run();
  if(!updated.meta.changes)return response({error:'A match was just saved. Retry once to sync your board.'},409);
  return response(result({...attempt,state:nextState,elapsed_ms:elapsedMs,finished_at:finishedAt},JSON.parse(nextState)));
