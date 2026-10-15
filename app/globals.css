@@ -26,3 +26,21 @@
 .round-guide{font-size:13px;line-height:1.6;color:var(--quiet);margin:12px 0 0}.round-guide span{display:block;margin-top:3px}.setup-choices{min-width:0}.choice[data-slot=select-trigger] [data-slot=select-value]{min-width:0;overflow:hidden;text-overflow:ellipsis}
 
 .setup-choices{flex-wrap:wrap}.original-refresh{font-size:13px}.original-refresh:disabled{opacity:.5}@media(max-width:500px){.original-refresh{width:100%}}
+
+/* Keep accepted sets alongside the board; class standings follow the playing area. */
+.found-sets{position:sticky;top:24px;align-self:start;min-width:0;margin-top:0;border-left:1px solid var(--rule);padding-left:28px}
+.found-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.found-heading h2{font-size:23px;font-weight:600;letter-spacing:-.035em;line-height:1.2;margin:0}
+.found-count{font-size:13px;font-variant-numeric:tabular-nums;color:var(--quiet);white-space:nowrap}
+.found-intro{font-size:13px;line-height:1.6;color:var(--quiet);margin:8px 0 24px}
+.found-sets ol{grid-template-columns:minmax(0,1fr)}
+.found-sets li{min-height:56px}
+.found-empty{font-size:14px;line-height:1.6;color:var(--quiet);padding:20px 0;border-top:1px solid var(--rule);margin:0}
+.standings.leaderboard-section{border-left:0;border-top:1px solid var(--rule);padding:28px 0 0;margin-top:36px}
+.standings-results{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);align-items:start;gap:32px}
+.leaderboard-section .rank-list{margin-top:0}
+.leaderboard-section .leaderboard-empty{text-align:left;max-width:55ch;padding:12px 0}
+.leaderboard-section .empty-podium{justify-content:flex-start;margin-left:0}
+@media(max-width:1100px){.found-sets{padding-left:22px}.found-sets li{gap:5px}.found-sets .mini-card{min-width:32px}.found-sets .found-numbers{font-size:11px}}
+@media(max-width:800px){.found-sets{position:static;border-left:0;border-top:1px solid var(--rule);padding:24px 0 0}.found-sets ol{grid-template-columns:repeat(2,minmax(0,1fr))}.standings-results{grid-template-columns:minmax(0,1fr);gap:24px}.standings.leaderboard-section{margin-top:32px}}
+@media(max-width:500px){.found-sets ol{grid-template-columns:minmax(0,1fr)}}
