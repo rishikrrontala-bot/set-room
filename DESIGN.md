@@ -126,9 +126,9 @@ DM Sans is the single family. Headings use compact spacing and medium weight; or
 
 ## Layout
 
-The main container caps at 1460px with 4.8% side padding. Desktop uses a flexible playing column, a 320px found-set column, and a 44px gap; a thin vertical rule separates them. The board is four columns by three rows. Its toolbar, timer, three-slot selection strip, feedback, and action row form a clear vertical sequence.
+The main container caps at 1460px with 4.8% side padding. Desktop uses a flexible playing column, a 380px found-set column, and a 44px gap; a thin vertical rule separates them. The board is four columns by three rows. Its toolbar, timer, three-slot selection strip, feedback, and action row form a clear vertical sequence.
 
-At 1100px the found-set column narrows to 270px and the gap to 26px. The found-set sidebar stays visible while scrolling the desktop board. At 800px found sets move directly below play, separated by a horizontal rule. The leaderboard follows the board and found sets, with the pizza leader beside the rank list on desktop and stacked results on mobile. At 500px controls occupy full-width rows and the twelve cards become three columns by four rows. The mobile timer is 58px; the found-set receipts stack and keyboard help disappears. Projector mode reduces surrounding chrome and increases the card width ratio.
+At 1100px the found-set column narrows to 320px and the gap to 26px. Found-set receipts use 52px miniature cards, larger symbols, and 13px card numbers for classroom readability. The found-set sidebar stays visible while scrolling the desktop board. At 800px found sets move directly below play, separated by a horizontal rule. The leaderboard follows the board and found sets, with the pizza leader beside the rank list on desktop and stacked results on mobile. At 500px controls occupy full-width rows and the twelve cards become three columns by four rows. Found-set receipts stack below 650px. The mobile timer is 58px and keyboard help disappears at 500px. Projector mode reduces surrounding chrome and increases the card width ratio.
 
 **The Board First Rule.** Keep the board and timer before standings in both visual and document order.
 

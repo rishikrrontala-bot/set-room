@@ -1,5 +1,9 @@
 # Verification
 
+## Larger found-set receipts — October 15, 2026
+
+The found-set sidebar is 380px on desktop and 320px at intermediate widths. Receipt cards are 52px tall with 34px symbols and 13px combination numbers; rows remain readable with six sets visible beside the board. Below 650px receipts use one column. The production build and muted local browser flow passed desktop, tablet, 600px, and 390px checks, including exact rendered sizes, no page overflow, score saving, Today/All time, and empty/reset states. The local server was stopped and port 5190 verified free. Publication verification is pending.
+
 ## Found sets beside the board — October 15, 2026
 
 The production build and local muted browser flow passed: found-set receipts appear beside the board, stay visible while scrolling at 1440px and 1024px, and show all six accepted triples. The leaderboard follows the playing area; Today/All time, automatic score saving, and reset/empty states still work. At 390px the board, found sets, and leaderboard follow that document order without horizontal overflow. Desktop, tablet, mobile, and populated leaderboard screenshots were reviewed. The layout scan found no structural warnings; the broader scan flags inherited style tokens plus the same incumbent heading/caption sizes reused by the new sidebar. These are advisory, and the established visual system is retained. The staged HTML/CSS checks and the full public browser flow passed on https://set-room.vercel.app. All 28 preexisting rounds and both saved-room bookmarks were preserved, and the synthetic production room/round was removed afterward. No backend or database changes were needed. Runtime source: `ba24382b0fd010f34b8c6120f386040aefc003db`; deployment: `dpl_GB6F5fFPsroDnvFkaEck8UtF4bNV`. The local test server was stopped and port 5190 verified free.
