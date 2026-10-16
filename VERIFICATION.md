@@ -2,7 +2,7 @@
 
 ## Larger found-set receipts — October 15, 2026
 
-The found-set sidebar is 380px on desktop and 320px at intermediate widths. Receipt cards are 52px tall with 34px symbols and 13px combination numbers; rows remain readable with six sets visible beside the board. Below 650px receipts use one column. The production build and muted local browser flow passed desktop, tablet, 600px, and 390px checks, including exact rendered sizes, no page overflow, score saving, Today/All time, and empty/reset states. The local server was stopped and port 5190 verified free. Publication verification is pending.
+The found-set sidebar is 380px on desktop and 320px at intermediate widths. Receipt cards are 52px tall with 34px symbols and 13px combination numbers; rows remain readable with six sets visible beside the board. Below 650px receipts use one column. The production build and muted local browser flow passed desktop, tablet, 600px, and 390px checks, including exact rendered sizes, no page overflow, score saving, Today/All time, and empty/reset states. The local server was stopped and port 5190 verified free. The staged stylesheet checks and the full public browser flow passed on https://set-room.vercel.app, including the exact larger rendered dimensions. All 29 preexisting rounds and both saved-room bookmarks were preserved; the synthetic production room and score were removed. Runtime source: `86bc6515ad34b5d5a7e5eb60b133944834389686`; deployment: `dpl_97xyf129NLQ6oGbG2yZmHqxTwHB7`.
 
 ## Found sets beside the board — October 15, 2026
 
